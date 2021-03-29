@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文具管理系统</title>
+    <link rel="stylesheet" href="../CSS/index1.css" type="text/css">
+</head>
+<body>
+    <div id="all">
+        <div id="head">
+           <div id="head-logo">
+               <a href="index1.html">文具管理系统</a>
+           </div>
+            <div id="search">
+                <input type="search" value="搜索" name="submit">
+                <input type="submit" value="搜索" name="">
+            </div>
+            <div id="exit">
+            欢迎登录：<span id="user_name"></span>
+            <input type="button" value="退出" onclick="window.location.href='login.html'"> 
+            </div>
+        </div>
+    <!--主页面 -->
+    <div id="content">
+        <div id="list-left">
+    <ul>
+        <li class="list">公告栏</li>
+        <li>文具事务用品</li>
+        <li>办公耗材</li>
+        <li>日杂百货</li>
+        <li>办公设备</li>
+        <li>财务用品</li>
+        <li>个人记录</li>
+        <li>后台管理</li>
+    </ul>
+        </div>
+        <!---->
+        <diV id="list-right">
+        <div class="table-for" style="display: block;">
+            <div class="img-for">
+                <img src="../picture/微信图片_20210324153009.jpg">
+            </div>
+            <div class="img-for">
+                <h2 style="color: darkred;">留言板</h2>
+                <textarea style="background-color: darkgray;width: 900px;height: 50px;">
+                
+                </textarea>
+            <input type="submit" value="提交" style="float: right;">
+            </div>
+         </div>
+        <div class="table-for">
+             <table class="table-list">
+              <tr>
+              <th>编号</th>
+              <th>名称</th>
+              <th>类型</th>
+              <th>剩余</th>
+              <th>操作</th>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>彩色复印纸</td>
+                <td>文件事务用品</td>
+                <td>223</td>
+                <td><input type="submit" value="出借"></td>
+            </tr>
+          </table>
+
+        </div>
+        <div class="table-for">
+            <table class="table-list">
+             <tr>
+             <th>编号</th>
+             <th>名称</th>
+             <th>类型</th>
+             <th>剩余</th>
+             <th>操作</th>
+           </tr>
+           <tr>
+               <td>001</td>
+               <td>彩色复印纸</td>
+               <td>办公耗材</td>
+               <td>23232</td>
+               <td><input type="submit" value="出借"></td>
+           </tr>
+         </table>
+
+       </div>
+       <div class="table-for">
+        <table class="table-list">
+         <tr>
+         <th>编号</th>
+         <th>名称</th>
+         <th>类型</th>
+         <th>剩余</th>
+         <th>操作</th>
+       </tr>
+       <tr>
+           <td>001</td>
+           <td>彩色复印纸</td>
+           <td>日杂百货</td>
+           <td>2233</td>
+           <td><input type="submit" value="出借"></td>
+       </tr>
+     </table>
+
+       </div>
+       <div class="table-for">
+        <table class="table-list">
+         <tr>
+         <th>编号</th>
+         <th>名称</th>
+         <th>类型</th>
+         <th>剩余</th>
+         <th>操作</th>
+       </tr>
+       <tr>
+           <td>001</td>
+           <td>彩色复印纸</td>
+           <td>办公设备</td>
+           <td>1223</td>
+           <td><input type="submit" value="出借"></td>
+       </tr>
+     </table>
+
+       </div>
+       <div class="table-for">
+        <table class="table-list">
+         <tr>
+         <th>编号</th>
+         <th>名称</th>
+         <th>类型</th>
+         <th>剩余</th>
+         <th>操作</th>
+       </tr>
+       <tr>
+           <td>001</td>
+           <td>彩色复印纸</td>
+           <td>财务用品</td>
+           <td>2233</td>
+           <td><input type="submit" value="出借"></td>
+       </tr>
+     </table>
+
+       </div>
+       <div class="table-for">
+        <table class="table-list">
+         <tr>
+         <th>编号</th>
+         <th>名称</th>
+         <th>类型</th>
+         <th>数量</th>
+         <th>出借时间</th>
+       </tr>
+       <tr>
+           <td>001</td>
+           <td>彩色复印纸</td>
+           <td>办公耗材</td>
+           <td>1</td>
+           <td>2021/3/21</td>
+       </tr>
+     </table>
+
+       </div>
+
+
+
+   
+    </diV>
+    <!---->
+    </div>
+    </div>
+    <script>
+        var username=localStorage.getItem('user_n');
+        var login_name=document.getElementById("user_name");
+        login_name.innerHTML=username;
+    </script>
+    <script>
+        var table1=document.querySelector("#list-left");
+        var list=table1.querySelectorAll("li");
+        var items=document.querySelectorAll(".table-for");
+       for(var i=0;i<list.length;i++){
+           list[i].setAttribute('index',i);
+             list[i].onclick=function(){
+                 for(var i=0;i<list.length;i++){
+                      list[i].className='';
+                 }
+                 this.className='list';
+                 var index2=this.getAttribute('index');
+                 console.log(index2);
+                 for(var i=0;i<items.length;i++){
+                     items[i].style.display='none';
+                 }
+                 items[index2].style.display='block';
+             }
+       }
+        
+    </script>
+</body>
+
+</html>

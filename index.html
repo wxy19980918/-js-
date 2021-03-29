@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+  <title>后台管理系统</title>
+    <link rel="stylesheet" href="../CSS/index.css">
+
+    <script src="../javascript/add-del.js"></script>
+        <script src="../javascript/user.js"></script>
+</head>
+<body style="position: relative">
+<div class="container-all">
+<div class="header">
+    <div class="head-logo"><h1>文具管理系统</h1></div>
+    <div class="search-input">
+       
+    <input id="search" type="search" placeholder="搜索文具" autocomplete="off">
+    
+     <div><input class="out" type="button" value="退出" onclick="out()"></div>
+    </div>
+</div>
+
+<div class="main-container">
+    <div class="index-container">
+        <ul>
+            <li  class="tab">文具管理</li>
+            <li>用户管理</li>
+            <li>留言信息</li>
+        </ul>
+    </div>
+    <div class="main">
+             <div class="caozuo" style="display: block;"><!--文具表单 -->
+                <div class="static">
+                文具编号：<input type="text" id="add0" placeholder="文具编号" autocomplete="off">
+                文具名称：<input type="text" id="add1" placeholder="文具名称" autocomplete="off">
+                文具数量：<input type="text" id="add2" placeholder="文具数量" ><br>
+                <button onclick="add()" style="background-color: rgb(42, 106, 165);border-radius: 10px;">添加</button>
+                <button onclick="update()" style="background-color: rgb(42, 106, 165);border-radius: 10px;">更新</button>          
+            </div>
+             <table id="table-main">
+            <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>数量</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>鼠标垫</td>
+                <td>12</td>
+                <td>
+            <input type="button" value="删除" onclick="del(this);"><input type="button" value="修改" onclick="motify(this);">
+            </td>
+            </tr>
+        </table>
+        </div>
+        <!-- 用户表单 -->
+        <div class="caozuo">
+            <div id="user-m">     
+         用户权限：<select id="userquery">       
+        <option value="管理员">管理员</option>
+        <option value="普通用户">普通用户</option>
+    </select>
+    用户名：<input  id="username" type="text" value="用户名" >
+    用户密码：<input id="userpass" type="text" value="密码" >
+    用户查询：<input  type="text" value="用户名">
+    <input type="button" value="更新" onclick="updata()">
+    </div>
+      <div id="user-containt">
+          <table id="user-table">
+              <tr>
+              <th>用户名</th>
+              <th>用户密码</th>
+              <th>用户权限</th>
+              <th>操作</th>
+              </tr>
+              <tr>
+               <td>201751701112</td>
+               <td>123456</td>
+               <td>管理员</td>
+               <td><input type="button" value="删除" onclick="dele(this);"><input type="button" value="修改" onclick="motif(this);">
+            </td>
+              </tr>
+          </table>
+      </div>
+    </div>
+    <div class="caozuo">
+        <h1>留言信息</h1>
+    </div>
+    </div>
+</div>
+</div>
+<script src="../javascript/user.js"></script>
+
+<script>
+   //退出登录函数
+ function out(){
+       window.location.href="login.html";
+   }
+  
+//     //查询函数：
+//     //1.获取表格中列表tr的值，存到一组数组中
+   
+//     //2.获取输入框
+//      var searchInput=document.getElementById("search");
+//      //3.给搜索框添加事件
+//     searchInput.oninput=function(){
+//         var tbody=document.getElementById("table-main").children;
+//           tbody.innerHTML="";
+//         var website=[];//定义一个空数组,用作后面接收参数
+//    var idv,namev,mathv;//定义三个参数接收获取的值
+//     var tables=document.getElementById("table-main").rows;
+//   for(var i=1; i<tables.length;i++){
+//      for(var k=0;k<tables[i].children.length;k++){
+//        idv=tables[i].children[k].innerText;
+//     //    namev=tables[i];
+//     //    mathv=tables[i];
+//     //    console.log(idv);
+//        website.push({idv:idv,namev:namev,mathv:mathv});
+//     //  console.log(website);
+//     }  
+// }
+      
+//      var inputvalue=this.value;  //获取输入框里的值
+//      console.log(inputvalue);
+     
+//      //每次在输入框输入内容的时候就清空table
+//       var count=0;
+//  var  objvalue=website[i];
+//      //4.拿搜索框的值与table中的数据（即数组的值）进行比较
+//      for( var j=1;j<website.length;j++){
+         
+//          if(objvalue.idv.indexOf(inputvalue)!=-1 ||objvalue.namev.indexOf(inputvalue)!=-1
+//          ||objvalue.mathv.indexOf(inputvalue)!=-1){
+//             //console.log("第"+j+"条数据符合");
+//             var newtable=tbody.insertRow(count);
+//             setTd(objvalue,newtable);
+//             setUpdateDeleteEvent();
+//          }
+//      }
+//     }
+ 
+ var tab_list=document.querySelector(".index-container");
+ var list=tab_list.querySelectorAll("li");
+ var items=document.querySelectorAll(".caozuo");
+
+ for( var i=0;i<list.length;i++){
+     list[i].setAttribute('index',i); 
+      list[i].onclick=function(){
+      for(i=0;i<list.length;i++){
+          list[i].className='';
+      }
+      this.className="tab";
+     var index1= this.getAttribute('index');
+     console.log(index1);
+     //循环要显示的对象，设置显示为隐藏
+     for( var i=0;i<items.length;i++){
+         items[i].style.display='none';
+     }
+     items[index1].style.display='block';
+
+ }
+}
+</script>
+
+</body>
+</html>

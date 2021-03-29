@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>登录注册页面</title>
+<script src="../javascript/login1.js"></script>
+<script src="../javascript/register.js"></script>
+<link rel="stylesheet" href="../CSS/login.css" type="text/css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<div id="container">
+<div id="header-logo">
+<h1>文具管理系统</h1>
+<!-- <form id="user-password" action="index.html">form提交表单 -->
+
+<div id="text-input-user"><!--登录的用户名 -->
+      <input id="username" type="text" name="username" placeholder="请输入用户名" required="required">
+</div>
+
+<div id="text-input-pass"><!--登录的密码 -->
+      <input id="userpass" type="password" name="password"  placeholder="请输入密码" required="required" >
+</div>
+<span id="span" style="color: red;"></span>
+<div id="login-button"><!--登录注册板块 -->
+<button class="login" onclick="user_login()">登录</button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="register"  onclick="register()">注册</button>
+</div>
+<!-- onclick="form=document.getElementById('user-password');form.action='index.html' -->
+<!-- </form> -->
+<!-- <div class="check">
+      <label class="remember-me">
+             <input type="checkbox" name="rememberme" checked="" value="true">记住账号密码            
+      </label>
+</div> -->
+
+</div>
+</div>
+</body>
+</html>

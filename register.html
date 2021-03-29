@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>用户注册</title>
+<link rel="stylesheet" href="../CSS/register.css">
+<script src="../javascript/user.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    
+<div class="sign">
+        <h1>用户注册</h1>
+        <hr>
+<div class="register-mage">
+      用户名：&nbsp;&nbsp;<input id="registername" type="text" placeholder="请输入6~12个数字或字母"><br>
+      <span id="user0" style="color: red;"></span>
+</div>
+
+<div class="register-mage">
+      输入密码：<input id="pass0" type="password" placeholder="输入密码">
+</div>
+
+<div class="register-mage">
+      输入密码：<input id="pass1" type="password" placeholder="确认密码"><br>
+      <span id="user1" style="color: red;"></span>
+</div>  
+
+<input type="button" value="注册" onclick="reg()" >
+<input type="button" value="取消" onclick="return1()">
+</div>
+
+<script>
+    function return1(){
+      window.location.href="login.html";
+    }
+
+   function reg(){
+  var user_name=document.getElementById('registername').value;//获取用户名输入框的值
+  var user_pass=document.getElementById('pass0').value;//获取第一个密码框的值
+  var user_pass2=document.getElementById('pass1').value;//获取第二个密码框的值
+ 
+  console.log(user_pass);
+  console.log(user_pass2);
+  
+  if(user_name==''){
+      var usern=document.getElementById('user0');
+      usern.innerHTML='用户名为空，请重新输入';
+      return;
+    }
+   else if(user_pass!=user_pass2){
+     var span1=document.getElementById('user1');
+     span1.innerHTML='密码不同，请重新确认';
+     return;
+  }
+  //
+  localStorage.setItem('username',user_name);
+   localStorage.setItem('userpass',user_pass);
+   alert('注册成功,请登录！')
+   window.location.href="login.html";
+   }
+   
+ 
+</script>
+</body>
+</html>
